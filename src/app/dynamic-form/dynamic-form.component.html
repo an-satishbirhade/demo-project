@@ -1,0 +1,54 @@
+<div class="">
+  Hello Interns
+  <form [formGroup]="myDynamicForm" (ngSubmit)="submitForm()">
+    <div *ngFor="let field of formContent.fields">
+      <div [ngSwitch]="field.type">
+        <div *ngSwitchCase="'text'">
+          <label>{{ field.label }}</label>
+          <input type="text" [formControlName]="field.name" />
+        </div>
+        <div *ngSwitchCase="'email'">
+          <label>{{ field.label }}</label>
+          <input type="email" [formControlName]="field.name" />
+        </div>
+        <div *ngSwitchCase="'password'">
+          <label>{{ field.label }}</label>
+          <input type="password" [formControlName]="field.name" />
+        </div>
+        <div *ngSwitchCase="'number'">
+          <label>{{ field.label }}</label>
+          <input type="number" [formControlName]="field.name" />
+        </div>
+        <div *ngSwitchCase="'tel'">
+          <label>{{ field.label }}</label>
+          <input type="tel" [formControlName]="field.name" />
+        </div>
+        <div *ngSwitchCase="'date'">
+          <label>{{ field.label }}</label>
+          <input type="date" [formControlName]="field.name" />
+        </div>
+        <div *ngSwitchCase="'time'">
+          <label>{{ field.label }}</label>
+          <input type="time" [formControlName]="field.name" />
+        </div>
+        <div *ngSwitchCase="'checkbox'">
+          <div *ngFor="let option of field.options">
+            <label>{{ option.label }}</label>
+            <input type="checkbox" [value]="option.value" [formControlName]="field.name" />
+          </div>
+        </div>
+        <div *ngSwitchCase="'radio'">
+          <div *ngFor="let option of field.options">
+            <label>{{ option.label }}</label>
+            <input type="radio" [value]="option.value" [formControlName]="field.name" />
+          </div>
+        </div>
+        <div *ngSwitchCase="'textarea'">
+          <label>{{ field.label }}</label>
+          <textarea [formControlName]="field.name"></textarea>
+        </div>
+      </div>
+    </div>
+    <button type="submit">Submit Form</button>
+  </form>
+</div>

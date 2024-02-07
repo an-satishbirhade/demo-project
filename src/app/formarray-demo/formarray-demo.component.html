@@ -1,0 +1,16 @@
+<form [formGroup]="factoryForm">
+  <!-- Input field for entering new product -->
+  <input type="text" class="" formControlName="newProduct"/>
+  <!-- Button to add new product -->
+  <button (click)="addNewProduct()" type="button">Add New Product</button>
+
+  <!-- Display area for products -->
+  <div formArrayName="products">
+    <div class="" *ngFor="let product of products.controls; let i=index;">
+      <!-- Display individual product -->
+      <div [formGroupName]="i">
+        {{ product.value.newProductName }}
+      </div>
+    </div>
+  </div>
+</form>
